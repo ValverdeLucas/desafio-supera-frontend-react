@@ -6,6 +6,7 @@ import { maskPhoneNumber } from "../../Masks/Masks";
 import { UserType } from "../../Global/Types/Types";
 import api from "../../Services/Api";
 import { BASE_URL } from "../../Constants/BASE_URL";
+import { useGlobalState } from "../../Global/GlobalState";
 
 interface Props {
     active: any;
@@ -35,6 +36,7 @@ const useFetchUser = (userId: string) => {
 
 const UserEdit = ({ active, userId }: Props) => {
 
+    const { updateUsers } = useGlobalState();
     const [successMessage, setSuccessMessage] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
     const [isLoading, setIsLoading] = useState(false);
@@ -83,6 +85,7 @@ const UserEdit = ({ active, userId }: Props) => {
         try {
             const result = await editUser(data);
             setSuccessMessage('Usuário editado com sucesso!')
+            updateUsers();
             closeEditUser();
         } catch (error: any) {
             setErrorMessage(error.message || 'Erro ao editar usuário')

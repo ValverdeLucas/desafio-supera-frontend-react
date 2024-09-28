@@ -11,6 +11,7 @@ interface GlobalState {
     currentPage: number;
     totalPages: number;
     changePage: (newPage: number) => void;
+    updateUsers: () => void;
 }
 
 const perfilMap = {
@@ -32,6 +33,7 @@ export const GlobalProvider: React.FC<{ children: React.ReactNode }> = ({ childr
         currentPage: 1,
         totalPages: 1,
         changePage: () => { },
+        updateUsers: (): void => { },
     });
 
     useEffect(() => {
@@ -42,9 +44,6 @@ export const GlobalProvider: React.FC<{ children: React.ReactNode }> = ({ childr
         setState(prevState => ({ ...prevState, loading: true }));
         try {
             const { data } = await api.get<any>(`${BASE_URL}/users/page=${pageNumber}`);
-
-            console.log(data)
-
             const convertedData = (data.users || []).map((user: UserType) => ({
                 ...user,
                 perfil: getPerfilDisplay(user.perfil)
@@ -70,12 +69,15 @@ export const GlobalProvider: React.FC<{ children: React.ReactNode }> = ({ childr
         }
     };
 
+    const updateUsers = async () => {
+        await fetchUsers(state.currentPage);
+    };
 
     return (
         <GlobalContext.Provider value={{
             ...state,
             userData: state.userData,
-            changePage: (newPage: number) => changePage(newPage),
+            changePage: (newPage: number) => changePage(newPage), updateUsers: () => updateUsers(),
         }}>
             {children}
         </GlobalContext.Provider>

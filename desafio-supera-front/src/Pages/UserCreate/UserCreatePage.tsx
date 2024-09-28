@@ -7,8 +7,63 @@ import api from "../../Services/Api";
 import { BASE_URL } from "../../Constants/BASE_URL";
 import { goToUserList } from "../../Routes/Coordinator";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useGlobalState } from "../../Global/GlobalState";
 
 function UserCreatePage() {
+    // const notify = () => {
+    //     toast("Wow so easy!");
+
+    //     toast.info('🦄 Wow so easy!', {
+    //         position: "bottom-center",
+    //         autoClose: 2500,
+    //         hideProgressBar: false,
+    //         closeOnClick: true,
+    //         pauseOnHover: true,
+    //         draggable: true,
+    //         progress: undefined,
+    //         theme: "light",
+    //         transition: Bounce,
+    //     });
+
+    //     toast.success('Usuário criado com sucesso!', {
+    //         position: "bottom-center",
+    //         autoClose: 2500,
+    //         hideProgressBar: false,
+    //         closeOnClick: true,
+    //         pauseOnHover: true,
+    //         draggable: true,
+    //         progress: undefined,
+    //         theme: "light",
+    //         transition: Bounce,
+    //     });
+
+    //     toast.error('Erro ao criar usuário!', {
+    //         position: "bottom-center",
+    //         autoClose: 2500,
+    //         hideProgressBar: false,
+    //         closeOnClick: true,
+    //         pauseOnHover: true,
+    //         draggable: true,
+    //         progress: undefined,
+    //         theme: "light",
+    //         transition: Bounce,
+    //     });
+
+    //     toast.warn('Confira os campos e tente novamente!', {
+    //         position: "bottom-center",
+    //         autoClose: 2500,
+    //         hideProgressBar: false,
+    //         closeOnClick: true,
+    //         pauseOnHover: true,
+    //         draggable: true,
+    //         progress: undefined,
+    //         theme: "light",
+    //         transition: Bounce,
+    //     });
+    // }
+
 
     const [user, setUser] = useState<UserType | null>(null)
     const [successMessage, setSuccessMessage] = useState('');
@@ -22,6 +77,8 @@ function UserCreatePage() {
     useEffect(() => {
         setValue("telefone", maskPhoneNumber(phoneValue) || null)
     }, [phoneValue])
+
+    const { updateUsers } = useGlobalState();
 
     const createUser = async (userData: UserType) => {
         try {
@@ -40,12 +97,9 @@ function UserCreatePage() {
 
         const formattedData = {
             ...userData,
-            telefone: userData.telefone || null,  // Garanta que o valor seja null se não for preenchido
-            idade: userData.idade || null,        // Garanta que o valor seja null se não for preenchido
+            telefone: userData.telefone || null, 
+            idade: userData.idade || null,
         };
-
-        console.log('Dados enviados para API:', userData);
-
 
         setIsLoading(true);
         setSuccessMessage('');
@@ -53,10 +107,10 @@ function UserCreatePage() {
 
         try {
             console.log(userData)
-
             const result = await createUser(formattedData);
             setUser(result)
             setSuccessMessage('Usuário criado com sucesso!')
+            updateUsers();
             goToUserList(navegar);
         } catch (error: any) {
             setErrorMessage(error.message || 'Erro ao criar usuário')
@@ -92,7 +146,9 @@ function UserCreatePage() {
                 {successMessage && <p style={{ color: 'green' }}>{successMessage}</p>}
                 {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
             </Form>
+            <ToastContainer />
         </Container>
+
     )
 }
 
