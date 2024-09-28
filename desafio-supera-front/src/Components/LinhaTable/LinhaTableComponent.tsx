@@ -29,12 +29,6 @@ function LinhaTableComponent({ user }: LinhaTableProps) {
                 </>
             ) : (
                 <>
-                    <ColunaTable>N/A</ColunaTable>
-                    <ColunaTable>N/A</ColunaTable>
-                    <ColunaTable>N/A</ColunaTable>
-                    <ColunaTable>N/A</ColunaTable>
-                    <ColunaTable>N/A</ColunaTable>
-                    <ColunaTable>N/A</ColunaTable>
                 </>
             )}
             <ButtonDiv>

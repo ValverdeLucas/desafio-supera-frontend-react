@@ -3,8 +3,8 @@ export interface UserType {
     nome: string;
     email: string;
     perfil: Perfil;
-    telefone: string;
-    idade: number;
+    telefone: string | null;
+    idade: number | null;
 }
 
 export interface UserAPI {

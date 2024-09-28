@@ -1,4 +1,4 @@
-export const maskPhoneNumber = (value: String | undefined) => {
+export const maskPhoneNumber = (value: String | null) => {
     if (!value) return ''
 
     return value.replace(/[\D]/g, '')

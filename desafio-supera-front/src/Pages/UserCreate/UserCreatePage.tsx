@@ -5,19 +5,22 @@ import { maskPhoneNumber } from "../../Masks/Masks";
 import { UserType } from "../../Global/Types/Types";
 import api from "../../Services/Api";
 import { BASE_URL } from "../../Constants/BASE_URL";
+import { goToUserList } from "../../Routes/Coordinator";
+import { useNavigate } from "react-router-dom";
 
 function UserCreatePage() {
 
-    const [user, setUser] = useState<UserType>()
+    const [user, setUser] = useState<UserType | null>(null)
     const [successMessage, setSuccessMessage] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const { register, watch, setValue, handleSubmit, formState: { errors } } = useForm<UserType>();
     console.log(errors);
+    const navegar = useNavigate();
     const phoneValue = watch("telefone")
 
     useEffect(() => {
-        setValue("telefone", maskPhoneNumber(phoneValue))
+        setValue("telefone", maskPhoneNumber(phoneValue) || null)
     }, [phoneValue])
 
     const createUser = async (userData: UserType) => {
@@ -29,24 +32,39 @@ function UserCreatePage() {
         }
     }
 
-    const onSubmit = async (data: UserType) => {
-        if (data && data !== user) {
-            setIsLoading(true);
-            setSuccessMessage('');
-            setErrorMessage('');
-            try {
-                const result = await createUser(data);
-                setUser(result)
-                setSuccessMessage('Usuário criado com sucesso!')
-            } catch (error: any) {
-                setErrorMessage(error.message || 'Erro ao criar usuário')
-            } finally {
-                setIsLoading(false)
-            }
+    const onSubmit = async (userData: UserType) => {
+        if (!userData || Object.keys(userData).length === 0) {
+            setErrorMessage('Dados inválidos');
+            return;
+        }
+
+        const formattedData = {
+            ...userData,
+            telefone: userData.telefone || null,  // Garanta que o valor seja null se não for preenchido
+            idade: userData.idade || null,        // Garanta que o valor seja null se não for preenchido
+        };
+
+        console.log('Dados enviados para API:', userData);
+
+
+        setIsLoading(true);
+        setSuccessMessage('');
+        setErrorMessage('');
+
+        try {
+            console.log(userData)
+
+            const result = await createUser(formattedData);
+            setUser(result)
+            setSuccessMessage('Usuário criado com sucesso!')
+            goToUserList(navegar);
+        } catch (error: any) {
+            setErrorMessage(error.message || 'Erro ao criar usuário')
+        } finally {
+            setIsLoading(false)
+
         }
     }
-
-    console.log(user)
 
     return (
         <Container>
