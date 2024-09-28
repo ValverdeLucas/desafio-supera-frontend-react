@@ -40,7 +40,7 @@ export const Table = styled.table`
 `
 
 export const ColunaTable = styled.th`
-    width: 15%;
+    width: 10%;
     border-radius: 30px;
     background-color: transparent;
     font-size: 1.75rem;

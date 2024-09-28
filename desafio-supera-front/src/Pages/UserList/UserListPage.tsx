@@ -3,6 +3,7 @@ import { ReturnButton } from "../../Components/Buttons/ReturnButton";
 import { AdvanceButton } from "../../Components/Buttons/AdvanceButton";
 import TableComponent from "../../Components/Table/TableComponent";
 import { useGlobalState } from "../../Global/GlobalState";
+import { ToastContainer } from "react-toastify";
 
 function UserListPage() {
 
@@ -21,6 +22,7 @@ function UserListPage() {
             {loading && <p>Carregando...</p>}
             {!loading && error && <p>Ocorreu um erro ao carregar os dados!</p>}
             {!loading && !error && <TableComponent />}
+            <ToastContainer limit={3} />
         </Container>
     )
 }

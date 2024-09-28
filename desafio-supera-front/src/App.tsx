@@ -1,14 +1,17 @@
 import { GlobalProvider } from "./Global/GlobalState";
 import { GlobalStyled } from "./Global/GlobalStyled"
+import { ToastProvider } from "./Global/ToastContext";
 import Router from "./Routes/Router"
 
 function App() {
   return (
     <>
-      <GlobalProvider>
-        <GlobalStyled />
-        <Router />
-      </GlobalProvider>
+      <ToastProvider>
+        <GlobalProvider>
+          <GlobalStyled />
+          <Router />
+        </GlobalProvider>
+      </ToastProvider>
     </>
   );
 }

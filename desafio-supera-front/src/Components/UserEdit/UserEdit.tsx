@@ -1,12 +1,13 @@
 import { Container, Text, Content, Form, FormInput, FormSelect, SelectOptions } from "./UserEditStyles";
 import { FaTimes } from "react-icons/fa";
 import { useForm } from "react-hook-form"
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { maskPhoneNumber } from "../../Masks/Masks";
 import { UserType } from "../../Global/Types/Types";
 import api from "../../Services/Api";
 import { BASE_URL } from "../../Constants/BASE_URL";
 import { useGlobalState } from "../../Global/GlobalState";
+import { useToast } from "../../Global/ToastContext";
 
 interface Props {
     active: any;
@@ -43,6 +44,8 @@ const UserEdit = ({ active, userId }: Props) => {
     const { register, watch, setValue, handleSubmit, formState: { errors } } = useForm<UserType>();
     console.log(errors);
     const phoneValue = watch("telefone");
+    const { notify } = useToast();
+
 
     const closeEditUser = () => {
         active(false)
@@ -79,16 +82,14 @@ const UserEdit = ({ active, userId }: Props) => {
         if (!user) return;
 
         setIsLoading(true);
-        setSuccessMessage('');
-        setErrorMessage('');
 
         try {
             const result = await editUser(data);
-            setSuccessMessage('Usuário editado com sucesso!')
+            notify('Usuário alterado com sucesso!', 'success');
             updateUsers();
             closeEditUser();
         } catch (error: any) {
-            setErrorMessage(error.message || 'Erro ao editar usuário')
+            notify('Erro ao editar usuário!', 'error');
         } finally {
             setIsLoading(false)
 

@@ -23,3 +23,5 @@ export enum Perfil {
     ADMIN = 'ADMIN',
     USER = 'USER'
 }
+
+export type ToastType = 'success' | 'error' | 'warning' | 'info';
