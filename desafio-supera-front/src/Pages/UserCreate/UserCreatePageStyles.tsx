@@ -28,6 +28,11 @@ export const FormInput = styled.input`
     width: 85%;
     height: 3rem;
     color:  red;
+
+    &::-webkit-outer-spin-button, &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
 `
 
 export const FormSelect = styled.select`

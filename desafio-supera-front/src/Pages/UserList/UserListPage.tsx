@@ -1,15 +1,26 @@
-import { Container, ReturnButton, AdvanceButton } from "./UserListPageStyles";
+import { Container } from "./UserListPageStyles";
+import { ReturnButton } from "../../Components/Buttons/ReturnButton";
+import { AdvanceButton } from "../../Components/Buttons/AdvanceButton";
 import TableComponent from "../../Components/Table/TableComponent";
-import { FaAngleRight, FaAngleLeft } from "react-icons/fa";
-
+import { useGlobalState } from "../../Global/GlobalState";
 
 function UserListPage() {
 
+    const { userData, loading, error, currentPage, totalPages, changePage } = useGlobalState();
+
+    const handlePageChange = (newPage: number) => {
+        changePage(newPage)
+    }
+
+    console.log(userData)
+
     return (
         <Container>
-            <ReturnButton />
-            <AdvanceButton />
-            <TableComponent />
+            <ReturnButton onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1} />
+            <AdvanceButton onClick={() => handlePageChange(currentPage + 1)} disabled={currentPage === totalPages} />
+            {loading && <p>Carregando...</p>}
+            {!loading && error && <p>Ocorreu um erro ao carregar os dados!</p>}
+            {!loading && !error && <TableComponent />}
         </Container>
     )
 }

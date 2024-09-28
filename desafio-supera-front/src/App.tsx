@@ -1,11 +1,14 @@
-import { GlobalStyled } from "./GlobalStyled"
+import { GlobalProvider } from "./Global/GlobalState";
+import { GlobalStyled } from "./Global/GlobalStyled"
 import Router from "./Routes/Router"
 
 function App() {
   return (
     <>
-      <GlobalStyled />
-      <Router />
+      <GlobalProvider>
+        <GlobalStyled />
+        <Router />
+      </GlobalProvider>
     </>
   );
 }

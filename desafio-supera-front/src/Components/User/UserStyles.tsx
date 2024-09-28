@@ -10,8 +10,21 @@ export const Container = styled.div<Props>`
     position: absolute;
     top: 0;
     right: 0;
-    background-color: transparent;
+    background-color: rgba(0, 0, 0, 0.5);
 `
+
+export const FormData = styled.form`
+display: flex;
+flex-direction: column;
+>div{
+    display: flex;
+}
+
+`
+
+export const Label = styled.span``
+export const Value = styled.p``
+
 
 export const Content = styled.div`
 position: absolute;
@@ -23,7 +36,7 @@ justify-content: center;
 top: 10%;
 width: 50vw;
 height: 80vh;
-background-color: #000;
+background-color: #fff;
 
 >svg {
     position: absolute;

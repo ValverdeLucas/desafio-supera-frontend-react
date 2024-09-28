@@ -3,12 +3,14 @@ import { FaPen, FaUser } from "react-icons/fa";
 
 export const ColunaTable = styled.th`
     width: 15%;
-    background-color: #fff;
+    background-color: transparent;
+    border-radius: 30px;
     color: red;
 `
 
 export const LinhaTable = styled.tr`
-    background-color: #fff;
+    height: 15%;
+    background-color: transparent;
     &:hover {
     transition: .5s;
 }
@@ -16,12 +18,13 @@ export const LinhaTable = styled.tr`
 
 export const ButtonDiv = styled.div`
     display: flex ;
-    gap: 3rem;
+    gap: 2rem;
     height: 100%;
     width: 100%;
     justify-content: center;
     align-items: center;
-`
+    border-radius: 30px;
+    `
 
 export const EditButton = styled(FaPen)`
 color: red;

@@ -1,28 +1,52 @@
+import { UserType } from "../../Global/Types/Types";
 import User from "../User/User";
 import UserEdit from "../UserEdit/UserEdit";
 import { LinhaTable, ColunaTable, EditButton, ShowUserButton, ButtonDiv } from "./LinhaTableComponentStyles";
 import { useState } from "react";
 
-function LinhaTableComponent() {
+interface LinhaTableProps {
+    user?: any;
+}
+
+function LinhaTableComponent({ user }: LinhaTableProps) {
 
     const [editUser, setEditUser] = useState(false);
-    const showEditUser = () => setEditUser(!editUser)
     const [showUser, setShowUser] = useState(false);
+
+    const showEditUser = () => setEditUser(!editUser)
     const showShowUser = () => setShowUser(!showUser)
 
     return (
         <LinhaTable>
-            <ColunaTable>Teste 1</ColunaTable>
-            <ColunaTable>Teste 2</ColunaTable>
-            <ColunaTable>Teste 3</ColunaTable>
-            <ColunaTable>Teste 4</ColunaTable>
-            <ColunaTable>Teste 5</ColunaTable>
+            {user && user.id ? (
+                <>
+                    <ColunaTable>{user.id}</ColunaTable>
+                    <ColunaTable>{user.nome}</ColunaTable>
+                    <ColunaTable>{user.email}</ColunaTable>
+                    <ColunaTable>{user.perfil}</ColunaTable>
+                    <ColunaTable>{user.telefone}</ColunaTable>
+                    <ColunaTable>{user.idade}</ColunaTable>
+                </>
+            ) : (
+                <>
+                    <ColunaTable>N/A</ColunaTable>
+                    <ColunaTable>N/A</ColunaTable>
+                    <ColunaTable>N/A</ColunaTable>
+                    <ColunaTable>N/A</ColunaTable>
+                    <ColunaTable>N/A</ColunaTable>
+                    <ColunaTable>N/A</ColunaTable>
+                </>
+            )}
             <ButtonDiv>
-                <EditButton onClick={showEditUser} />
-                {editUser && <UserEdit active={setEditUser} />}
-               
-                <ShowUserButton onClick={showShowUser} />
-                {showUser && <User active={setShowUser} />}
+                {user && user.id ? (
+                    <>
+                        <EditButton onClick={showEditUser} />
+                        {editUser && <UserEdit active={setEditUser} userId={user?.id} />}
+
+                        <ShowUserButton onClick={showShowUser} />
+                        {showUser && <User active={setShowUser} user={user as UserType} />}
+                    </>
+                ) : null}
             </ButtonDiv>
 
 
