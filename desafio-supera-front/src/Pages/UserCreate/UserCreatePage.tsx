@@ -28,6 +28,7 @@ function UserCreatePage() {
         setValue("telefone", maskPhoneNumber(phoneValue) || null)
     }, [phoneValue])
 
+
     const { updateUsers } = useGlobalState();
 
     const createUser = async (userData: UserType) => {
@@ -87,13 +88,14 @@ function UserCreatePage() {
                 </FormSelect>
                 {errors.perfil && <p>O perfil é obrigatório</p>}
 
-                <FormInput type="tel" placeholder="Telefone"     {...register("telefone", {})} />
+                <FormInput type="tel" placeholder="Telefone" {...register("telefone", { pattern: /^\\([1-9]{2}\\) 9[0-9]{4}\-[0-9]{4}$/ })} onBlur={(e) => console.log("Value changed:", e.target.value)}
+                />
                 {errors.telefone && <p>O padrão precisa ser: &#40;xx&#41; 9xxxx-xxxx</p>}
 
-                <FormInput type="number" placeholder="Idade" {...register("idade", { min: 0 })} />
+                < FormInput type="number" placeholder="Idade" {...register("idade", { min: 0 })} />
                 {errors.idade && <p>A idade não pode ser menor do que 0!</p>}
 
-                <FormInput type="submit" value="Submit" id="submit-button-create"/>
+                < FormInput type="submit" value="Submit" id="submit-button-create" />
                 {successMessage && <p style={{ color: 'green' }}>{successMessage}</p>}
                 {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
             </Form>
