@@ -88,7 +88,7 @@ function UserCreatePage() {
                 </FormSelect>
                 {errors.perfil && <p>O perfil é obrigatório</p>}
 
-                <FormInput type="tel" placeholder="Telefone" {...register("telefone", { pattern: /^\\([1-9]{2}\\) 9[0-9]{4}\-[0-9]{4}$/ })} onBlur={(e) => console.log("Value changed:", e.target.value)}
+                <FormInput type="tel" placeholder="Telefone" {...register("telefone", { pattern: /^\([1-9]{2}\) 9[0-9]{4}\-[0-9]{4}$/ })} 
                 />
                 {errors.telefone && <p>O padrão precisa ser: &#40;xx&#41; 9xxxx-xxxx</p>}
 
