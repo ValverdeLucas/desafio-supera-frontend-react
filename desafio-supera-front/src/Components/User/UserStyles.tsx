@@ -10,6 +10,7 @@ export const Container = styled.div<Props>`
     position: absolute;
     display: flex;
     justify-content: center;
+    align-items: center;
     top: 0;
     right: 0;
     background-color: rgba(0, 0, 0, 0.5);   
@@ -23,14 +24,13 @@ padding: 1rem;
 justify-content: center;
 align-items: center;
 border-radius: 30px;
-top: 10%;
 width: 40vw;
 height: 60vh;
 background-color: #fff  ;
 
 >svg {
     position: absolute;
-        color: red;
+        color: #16697A;
         width: 30px;
         height: 30px;
         top:20px;
@@ -57,9 +57,8 @@ export const FormInput = styled.input`
     height: 4rem;
     font-size: 1.5rem;
     border-radius: 30px;
-    color:  red;
     padding: 0 1rem;
-    border: 1px solid #000;
+    border: 1px solid #16697A;
 
     &::-webkit-outer-spin-button, &::-webkit-inner-spin-button {
     -webkit-appearance: none;
@@ -67,5 +66,5 @@ export const FormInput = styled.input`
 }
 `
 export const Text = styled.h1`
-color: red;
+color: #16697A;
 `;

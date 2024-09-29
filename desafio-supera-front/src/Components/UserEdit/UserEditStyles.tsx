@@ -25,12 +25,12 @@ align-items: center;
 border-radius: 30px;
 top: 10%;
 width: 40vw;
-height: 70vh;
+height: 80vh;
 background-color: #fff  ;
 
 >svg {
     position: absolute;
-        color: red;
+        color: #16697A;
         width: 30px;
         height: 30px;
         top:20px;
@@ -50,11 +50,6 @@ padding: 0 1rem;
 height: 100%;
 width: 40vw;
 background-color: #fff;
->button {
-    text-decoration: none;
-        background-color: red;
-        color: white;
-    }
 `
 
 export const FormInput = styled.input`
@@ -62,12 +57,19 @@ export const FormInput = styled.input`
     height: 4rem;
     font-size: 1.5rem;
     border-radius: 30px;
-    color:  red;
     padding: 0 1rem;
-    border: 1px solid #000;
+    border: 1px solid #16697A;
 
     &#submit-button-edit {
-        background-color: red;
+        background-color: #16697A;
+        width: 50%;
+        color: white;
+        cursor: pointer;
+        transition: .5s;
+    }
+
+    &#submit-button-edit:hover {
+        background-color: #FFA62B;
         color: white;
     }
 
@@ -81,9 +83,9 @@ export const FormInput = styled.input`
 export const FormSelect = styled.select`
     width: 80%;
     height: 3rem;
-    color:  red;
     height: 4rem;
     padding: 0 1rem;
+    border: 1px solid #16697A;
     font-size: 1.5rem;
     border-radius: 30px;
     -webkit-appearance: none;
@@ -91,11 +93,10 @@ export const FormSelect = styled.select`
 `
 
 export const SelectOptions = styled.option`
-        width: 80%;
+    width: 80%;
     height: 4rem;
-    color:  red;
 `
 
 export const Text = styled.h1`
-color: red;
+color: #16697A;
 `;

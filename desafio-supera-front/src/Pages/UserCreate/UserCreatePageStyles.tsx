@@ -7,7 +7,7 @@ width: 100vw;
 align-items : center;
 justify-content: center;
 height: 80vh;
-background-color: #000;
+background-color: #82C0CC;
 `
 
 export const Form = styled.form`
@@ -18,21 +18,30 @@ justify-content: center;
 gap: 1rem;
 align-items: center;
 padding: 1rem;
-width: 50vw;
-height: 70vh;
-background-color: #fff;
+width: 40vw;
+height: 60vh;
+background-color: #EDE7E3;
 `
 
 export const FormInput = styled.input`
-    width: 85%;
-    height: 3rem;
+    width: 90%;
+    height: 4rem;
+    font-size: 1.5rem;
     border-radius: 30px;
-    color:  red;
+    color: #000;
     padding: 0 1rem;
-    border: 1px solid #000;
+    border: 1px solid #16697A;
 
     &#submit-button-create {
-        background-color: red;
+        background-color: #16697A;
+        width: 50%;
+        color: white;
+        cursor: pointer;
+        transition: .5s;
+    }
+    
+    &#submit-button-create:hover {
+        background-color: #FFA62B;
         color: white;
     }
 
@@ -43,19 +52,20 @@ export const FormInput = styled.input`
 `
 
 export const FormSelect = styled.select`
-    width: 85%;
+    width: 90%;
+    height: 4rem;
     border-radius: 30px;
     padding: 0 1rem;
-    height: 3rem;
-    color:  red;
+    font-size: 1.5rem;
+    color:  #000;
+    border: 1px solid #16697A;
     -webkit-appearance: none;
     -moz-appearance: none;
 `
 
 export const SelectOptions = styled.option`
-    width: 85%;
     height: 3rem;
-    color:  red;
+    color: #000;
 `
 
 export const Text = styled.h1`

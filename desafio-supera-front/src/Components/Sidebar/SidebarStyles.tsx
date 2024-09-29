@@ -5,23 +5,23 @@ interface Props {
 }
 
 export const Container = styled.div<Props>`
-    background-color: #302460;
+    background-color: #16697A;
     position: fixed;
     height: 17rem;
     border-radius: 30px;
     top: 0;
     left: 0;
-    width: 300px;
+    width: 250px;
     left: ${props => props.sidebar ? '0' : '-100%'};
     animation: showSidebar .5s;
     
     > svg {
         position: fixed;
-        color: white;
-        width: 30px;
-        height: 30px;
-        margin-top: 32px;
-        margin-left: 32px;
+        color: #EDE7E3;
+        width: 35px;
+        height: 35px;
+        margin-top: 2rem;
+        margin-left: 2rem;
         cursor: pointer;
     }
 
@@ -31,7 +31,7 @@ export const Container = styled.div<Props>`
             width: 0;
         } to {
             opacity: 1;
-            width: 300px;
+            width: 250px;
         }
     }
 `
@@ -44,19 +44,22 @@ export const Content = styled.div`
 
 export const Button = styled.button`
 padding: 1rem;
-width: 60%;
+width: 70%;
 align-self: center;
 text-decoration: none;
 border-radius: 30px;
 cursor: pointer;
-background-color: red;
-color: white;
+border: 1px solid transparent;
+font-size: 1rem;
+background-color: #489FB5;
+color: #EDE7E3;
 animation: showButton .5s;
+
 
 &:hover {
     transition: .5s;
-    background-color: white;
-    color: red;
+    background-color: #82C0CC;
+    color: #16697A;
 }
 
 @keyframes showButton {
@@ -65,7 +68,7 @@ animation: showButton .5s;
             width: 0;
         } to {
             opacity: 1;
-            width: 60%;
+            width: 70%;
         }        
     }
 `

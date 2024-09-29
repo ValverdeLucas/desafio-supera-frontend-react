@@ -7,20 +7,16 @@ export const ColunaTable = styled.th`
     width: 10%;
     background-color: transparent;
     border-radius: 30px;
-    color: red;
+    color: #000;
+    font-size: 1.25rem;
 `
 
 export const LinhaTable = styled.tr`
-    height: 12.5%;
-    background-color: transparent;
-    &:hover {
-    transition: .5s;
-}
+    height: 15%;
 `
 
 export const ButtonDiv = styled.div`
     display: flex ;
-
     gap: 1rem;
     height: 100%;
     width: 100%;
@@ -30,36 +26,36 @@ export const ButtonDiv = styled.div`
     `
 
 export const EditButton = styled(FaPen)`
-color: red;
+color: #16697A;
 width: 2rem;
 height: 2rem;
 cursor: pointer;
 
 &:hover {
     transition: .5s;
-    color: white;
+    color: #489FB5;
 }
     
 `
 
 export const ShowUserButton = styled(FaUser)`
-color: red;
+color: #16697A;
 width: 2rem;
 height: 2rem;
 cursor: pointer;    
 
 &:hover {
     transition: .5s;
-    color: white;
+    color: #489FB5;
 }`
 
 export const DeleteUserButton = styled(MdDelete)`
-color: red;
+color: #16697A;
 width: 2.5rem;
 height: 2.5rem;
 cursor: pointer;    
 
 &:hover {
     transition: .5s;
-    color: white;
+    color: #489FB5;
 }`

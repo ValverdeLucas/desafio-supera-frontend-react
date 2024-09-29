@@ -1,4 +1,4 @@
-import { Container, Text } from "./HeaderStyles"
+import { Container, HeaderDiv, Text } from "./HeaderStyles"
 import { useState } from "react";
 import { FaBars } from "react-icons/fa";
 import Sidebar from "../Sidebar/Sidebar"
@@ -14,22 +14,28 @@ function Header() {
         case "/":
             return (
                 <Container>
-                    <FaBars onClick={mostrarSidebar} />
-                    <Text>Lista de Usuários</Text>
+                    <HeaderDiv>
+                        <FaBars onClick={mostrarSidebar} />
+                        <Text>Lista de Usuários</Text>
+                    </HeaderDiv>
                     {sidebar && <Sidebar active={setSidebar} />}
                 </Container>);
         case "/user/create":
             return (
                 <Container>
-                    <FaBars onClick={mostrarSidebar} />
-                    <Text>Criação de Usuário</Text>
+                    <HeaderDiv>
+                        <FaBars onClick={mostrarSidebar} />
+                        <Text>Criação de Usuário</Text>
+                    </HeaderDiv>
                     {sidebar && <Sidebar active={setSidebar} />}
-                </Container>);
+                </Container >);
         default:
             return (
                 <Container>
-                    <FaBars onClick={mostrarSidebar} />
-                    <Text>Lista de Usuários</Text>
+                    <HeaderDiv>
+                        <FaBars onClick={mostrarSidebar} />
+                        <Text>Lista de Usuários</Text>
+                    </HeaderDiv>
                     {sidebar && <Sidebar active={setSidebar} />}
                 </Container>);
 
