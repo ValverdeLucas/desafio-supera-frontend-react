@@ -13,7 +13,35 @@ export const Container = styled.div`
 export const InputWrapper = styled.div`
     width: 90vw;
     display: flex;
+    justify-content: space-between;
 
+`
+
+export const ButtonWrapper = styled.div`
+ width: 15%;
+    >button {
+        text-decoration: none;
+        height: 5vh;
+        width: 50%;
+        font-size: 1rem;
+    }
+
+    #button-aplicar {
+        border-radius: 30px 0 0 30px;
+        background-color: rebeccapurple;
+        color: white;
+    }
+
+    #button-limpar {
+        border-radius: 0 30px 30px 0;
+        background-color: red;
+        color: white;
+    }
+    
+`
+
+export const FilterWrapper = styled.div`
+    width: 82.5%;
     >input{
         width: 90%;
         height: 5vh;
@@ -25,11 +53,16 @@ export const InputWrapper = styled.div`
     >select{
         width: 10%;
         font-size: 1.5rem;
-        height: 5vh;
+        background-color: red;
+        color: white;
+        height: 4.75vh;
+        padding: 0 .5rem;
         border-radius: 0 30px 30px 0;
+        border: 1px transparent;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+
     }
-
-
 `
 
 export const Table = styled.table`

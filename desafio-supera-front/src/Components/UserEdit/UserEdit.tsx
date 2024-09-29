@@ -100,9 +100,10 @@ const UserEdit = ({ active, userId }: Props) => {
         <Container editUser={active}>
             <Content>
                 <FaTimes onClick={closeEditUser} />
-                <Text>Página de Editar Usuário</Text>
+                <Text>Edição de Usuário</Text>
+                <Text>{user?.nome} - ID {user?.id}</Text>
                 <Form onSubmit={handleSubmit(onSubmit)}>
-                    <FormInput type="text" placeholder="Nome" {...register("nome", { required: true, max: 100, min: 3 })} />
+                    <FormInput type="text" placeholder="Nome" {...register("nome", { required: true, maxLength: 100, minLength: 3 })} />
                     {errors.nome && <p>O nome é obrigatório! &#40;Min caracteres: 3 / Max caracteres: 100&#41;</p>}
 
                     <FormInput type="text" placeholder="E-mail" {...register("email", { required: true, pattern: /^\S+@\S+$/i })} />
@@ -121,7 +122,7 @@ const UserEdit = ({ active, userId }: Props) => {
                     <FormInput type="number" placeholder="Idade" {...register("idade", { min: 0 })} />
                     {errors.idade && <p>A idade não pode ser menor do que 0!</p>}
 
-                    <FormInput type="submit" value="Submit" />
+                    <FormInput type="submit" value="Submit" id="submit-button-edit" />
                     {successMessage && <p style={{ color: 'green' }}>{successMessage}</p>}
                     {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
                 </Form>

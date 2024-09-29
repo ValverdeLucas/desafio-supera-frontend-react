@@ -5,7 +5,7 @@ interface Props {
 }
 
 export const Container = styled.div<Props>`
-    background-color: #171923;
+    background-color: #302460;
     position: fixed;
     height: 17rem;
     border-radius: 30px;

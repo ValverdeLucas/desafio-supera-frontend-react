@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Content, Text, FormData, Label, Value } from './UserStyles';
+import { Container, Content, Text, Form, FormInput } from './UserStyles';
 import { FaTimes } from 'react-icons/fa';
 import { Perfil, UserType } from '../../Global/Types/Types';
 
@@ -32,52 +32,25 @@ const User: React.FC<Props> = ({ active, user }) => {
             });
         }
     }, [user]);
+
     const closeUser = () => {
         active(false);
-    };
-
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const { name, value } = event.target;
-        setFormData({ ...formData, [name]: value });
     };
 
     return (
         <Container showUser={active}>
             <Content>
                 <FaTimes onClick={closeUser} />
-                <div>
-                    <Text>Página do Usuário Único</Text>
-                    <FormData>
-                        <div>
-                            <Label>ID:</Label>
-                            <Value>{user.id}</Value>
-                        </div>
-                        <div>
-                            <Label>Nome:</Label>
-                            <Value>{user.nome}</Value>
-                        </div>
+                <Text>Perfil do Usuário</Text>
+                <Text>{user.nome} - ID {user.id}</Text>
+                <Form>
+                    <FormInput type="text" placeholder="Nome" value={user.nome} disabled/>
+                    <FormInput type="text" placeholder="E-mail" value={user.email} disabled/>
+                    <FormInput type="text" placeholder="Perfil" value={user.perfil} disabled/>
+                    <FormInput type="tel" placeholder="Telefone" value={user.telefone} disabled/>
+                    <FormInput type="number" placeholder="Idade" value={user.idade} disabled/>
 
-                        <div>
-                            <Label>Email:</Label>
-                            <Value>{user.email}</Value>
-                        </div>
-
-                        <div>
-                            <Label>Perfil:</Label>
-                            <Value>{user.perfil}</Value>
-                        </div>
-
-                        <div>
-                            <Label>Telefone:</Label>
-                            <Value>{user.telefone}</Value>
-                        </div>
-
-                        <div>
-                            <Label>Idade:</Label>
-                            <Value>{user.idade}</Value>
-                        </div>
-                    </FormData>
-                </div>
+                </Form>
             </Content>
         </Container>
     );

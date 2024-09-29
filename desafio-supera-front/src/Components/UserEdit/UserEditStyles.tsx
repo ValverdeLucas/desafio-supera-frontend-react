@@ -8,6 +8,8 @@ export const Container = styled.div<Props>`
     width: 100vw;
     height: 100vh;
     position: absolute;
+    display: flex;
+    justify-content: center;
     top: 0;
     right: 0;
     background-color: rgba(0, 0, 0, 0.5);   
@@ -16,13 +18,14 @@ export const Container = styled.div<Props>`
 export const Content = styled.div`
 position: absolute;
 display: flex;
+flex-direction: column;
 padding: 1rem;
 justify-content: center;
-right: 25%;
+align-items: center;
 border-radius: 30px;
 top: 10%;
-width: 50vw;
-height: 80vh;
+width: 40vw;
+height: 70vh;
 background-color: #fff  ;
 
 >svg {
@@ -41,35 +44,55 @@ border-radius: 30px;
 display: flex;
 flex-direction: column;
 justify-content: center;
-gap: 1rem;
 align-items: center;
-padding: 1rem;
-width: 50vw;
-/* overflow: scroll; */
-height: 75vh;
+gap: 1rem;
+padding: 0 1rem;
+height: 100%;
+width: 40vw;
 background-color: #fff;
+>button {
+    text-decoration: none;
+        background-color: red;
+        color: white;
+    }
 `
 
 export const FormInput = styled.input`
-    width: 85%;
-    height: 3rem;
+    width: 80%;
+    height: 4rem;
+    font-size: 1.5rem;
+    border-radius: 30px;
     color:  red;
+    padding: 0 1rem;
+    border: 1px solid #000;
+
+    &#submit-button-edit {
+        background-color: red;
+        color: white;
+    }
 
     &::-webkit-outer-spin-button, &::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
+
 }
 `
 
 export const FormSelect = styled.select`
-    width: 85%;
+    width: 80%;
     height: 3rem;
     color:  red;
+    height: 4rem;
+    padding: 0 1rem;
+    font-size: 1.5rem;
+    border-radius: 30px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
 `
 
 export const SelectOptions = styled.option`
-        width: 85%;
-    height: 3rem;
+        width: 80%;
+    height: 4rem;
     color:  red;
 `
 

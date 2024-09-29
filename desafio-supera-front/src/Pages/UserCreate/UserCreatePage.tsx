@@ -74,7 +74,7 @@ function UserCreatePage() {
     return (
         <Container>
             <Form onSubmit={handleSubmit(onSubmit)}>
-                <FormInput type="text" placeholder="Nome (obrigatório)" {...register("nome", { required: true, max: 100, min: 3 })} />
+                <FormInput type="text" placeholder="Nome (obrigatório)" {...register("nome", { required: true, maxLength: 100, minLength: 3 })} />
                 {errors.nome && <p>O nome é inválido! &#40;Min caracteres: 3 / Max caracteres: 100&#41;</p>}
 
                 <FormInput type="text" placeholder="E-mail (obrigatório)" {...register("email", { required: true, pattern: /^\S+@\S+$/i })} />
@@ -93,7 +93,7 @@ function UserCreatePage() {
                 <FormInput type="number" placeholder="Idade" {...register("idade", { min: 0 })} />
                 {errors.idade && <p>A idade não pode ser menor do que 0!</p>}
 
-                <FormInput type="submit" value="Submit" />
+                <FormInput type="submit" value="Submit" id="submit-button-create"/>
                 {successMessage && <p style={{ color: 'green' }}>{successMessage}</p>}
                 {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
             </Form>

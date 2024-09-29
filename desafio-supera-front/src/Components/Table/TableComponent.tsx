@@ -1,5 +1,5 @@
 import LinhaTableComponent from "../LinhaTable/LinhaTableComponent";
-import { Table, LinhaTable, ColunaTable, InputWrapper, Container } from "./TableComponentStyles";
+import { Table, LinhaTable, ColunaTable, InputWrapper, Container, FilterWrapper, ButtonWrapper } from "./TableComponentStyles";
 import { useGlobalState } from "../../Global/GlobalState";
 import { useEffect, useState } from "react";
 import { useToast } from "../../Global/ToastContext";
@@ -37,7 +37,7 @@ function TableComponent() {
         if (filterType === 'perfil') {
             adjustedValue = mapProfileValue(filterValue);
         }
-        
+
         if (filterValue !== '' && filterType) {
             filterUsers(filterType, adjustedValue);
         } else if (filterType === '') {
@@ -62,21 +62,25 @@ function TableComponent() {
     return (
         <Container>
             <InputWrapper>
-                <input
-                    type="text"
-                    name="filterValue"
-                    value={filterValue}
-                    onChange={handleFilterChange}
-                    placeholder="Escolha o filtro ao lado e digite sua busca!">
-                </input>
-                <select name="filterType" value={filterType} onChange={handleFilterChange}>
-                    <option value="">Filtrar</option>
-                    <option value="nome">Nome</option>
-                    <option value="email">E-mail</option>
-                    <option value="perfil">Perfil</option>
-                </select>
-                <button onClick={handleSubmitFilter}>Aplicar Filtro</button>
-                <button onClick={handleClearFilter}>Limpar Filtro</button>
+                <FilterWrapper>
+                    <input
+                        type="text"
+                        name="filterValue"
+                        value={filterValue}
+                        onChange={handleFilterChange}
+                        placeholder="Escolha o filtro ao lado e digite sua busca!">
+                    </input>
+                    <select name="filterType" value={filterType} onChange={handleFilterChange}>
+                        <option value="">Filtrar</option>
+                        <option value="nome">Nome</option>
+                        <option value="email">E-mail</option>
+                        <option value="perfil">Perfil</option>
+                    </select>
+                </FilterWrapper>
+                <ButtonWrapper>
+                    <button onClick={handleSubmitFilter} id="button-aplicar">Aplicar Filtro</button>
+                    <button onClick={handleClearFilter} id="button-limpar">Limpar Filtro</button>
+                </ButtonWrapper>
             </InputWrapper>
             <Table>
                 <LinhaTable>
