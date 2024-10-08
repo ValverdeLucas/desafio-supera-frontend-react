@@ -26,7 +26,7 @@ Siga os passos abaixo para rodar o projeto localmente:
 - Clone o repositório:
     ```bash
     git clone https://github.com/ValverdeLucas/desafio-supera-frontend-react.git
-    cd supera-crud-frontend
+    cd desafio-supera-front
     ```
 - Instale as dependências:
     ```bash
