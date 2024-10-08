@@ -38,8 +38,6 @@ const useFetchUser = (userId: string) => {
 const UserEdit = ({ active, userId }: Props) => {
 
     const { updateUsers } = useGlobalState();
-    const [successMessage, setSuccessMessage] = useState('');
-    const [errorMessage, setErrorMessage] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const { register, watch, setValue, handleSubmit, formState: { errors } } = useForm<UserType>();
     console.log(errors);
@@ -124,8 +122,6 @@ const UserEdit = ({ active, userId }: Props) => {
                     {errors.idade && <p>A idade não pode ser menor do que 0!</p>}
 
                     <FormInput type="submit" value="Submit" id="submit-button-edit" />
-                    {successMessage && <p style={{ color: 'green' }}>{successMessage}</p>}
-                    {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
                 </Form>
             </Content >
 
@@ -134,7 +130,3 @@ const UserEdit = ({ active, userId }: Props) => {
 }
 
 export default UserEdit;
-function setUser(newUserData: UserType): any {
-    throw new Error("Function not implemented.");
-}
-

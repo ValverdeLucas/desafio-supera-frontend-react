@@ -1,7 +1,6 @@
 import React from 'react';
 import { Container, Content, Text, Form, FormInput } from './UserStyles';
 import { FaTimes } from 'react-icons/fa';
-import { Perfil, UserType } from '../../Global/Types/Types';
 
 interface Props {
     active: (show: boolean) => void;
@@ -9,6 +8,7 @@ interface Props {
 }
 
 const User: React.FC<Props> = ({ active, user }) => {
+    
     const [formData, setFormData] = React.useState<any>({
         id: '',
         nome: '',
@@ -49,7 +49,6 @@ const User: React.FC<Props> = ({ active, user }) => {
                     <FormInput type="text" placeholder="Perfil" value={user.perfil} disabled/>
                     <FormInput type="tel" placeholder="Telefone" value={user.telefone} disabled/>
                     <FormInput type="number" placeholder="Idade" value={user.idade} disabled/>
-
                 </Form>
             </Content>
         </Container>

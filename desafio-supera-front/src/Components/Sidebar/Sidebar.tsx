@@ -1,6 +1,6 @@
 import { Button, Container, Content } from "./SidebarStyles";
 import { useNavigate } from "react-router-dom"
-import { goToUserList, goToCreateUser, goToUser, goToEditUser } from "../../Routes/Coordinator"
+import { goToUserList, goToCreateUser } from "../../Routes/Coordinator"
 import { FaTimes } from "react-icons/fa";
 
 interface Props {

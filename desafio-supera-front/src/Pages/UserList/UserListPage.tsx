@@ -7,13 +7,11 @@ import { ToastContainer } from "react-toastify";
 
 function UserListPage() {
 
-    const { userData, loading, error, currentPage, totalPages, changePage } = useGlobalState();
+    const { loading, error, currentPage, totalPages, changePage } = useGlobalState();
 
     const handlePageChange = (newPage: number) => {
         changePage(newPage)
     }
-
-    console.log(userData)
 
     return (
         <Container>

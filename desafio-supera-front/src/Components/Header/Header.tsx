@@ -38,7 +38,6 @@ function Header() {
                     </HeaderDiv>
                     {sidebar && <Sidebar active={setSidebar} />}
                 </Container>);
-
     }
 }
 

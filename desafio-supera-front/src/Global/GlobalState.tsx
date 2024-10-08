@@ -1,4 +1,3 @@
-// src/Global/GlobalState.tsx
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import api from '../Services/Api';
 import { BASE_URL } from '../Constants/BASE_URL';
@@ -71,7 +70,6 @@ export const GlobalProvider: React.FC<{ children: React.ReactNode }> = ({ childr
             } else {
 
                 const { data } = await api.get<any>(`${BASE_URL}/users/page=${pageNumber}`);
-                console.log(data)
                 const convertedData = (data.users || []).map((user: UserType) => ({
                     ...user,
                     perfil: getPerfilDisplay(user.perfil)

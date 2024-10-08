@@ -1,7 +1,7 @@
 import LinhaTableComponent from "../LinhaTable/LinhaTableComponent";
 import { Table, LinhaTable, ColunaTable, InputWrapper, Container, FilterWrapper, ButtonWrapper } from "./TableComponentStyles";
 import { useGlobalState } from "../../Global/GlobalState";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useToast } from "../../Global/ToastContext";
 
 function TableComponent() {
